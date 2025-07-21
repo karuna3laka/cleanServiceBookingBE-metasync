@@ -5,6 +5,24 @@ import uuid
 
 booking_bp = Blueprint("bookings", __name__)
 
+#######################################
+
+@booking_bp.route("/admin/bookings", methods=["GET"])
+def get_all_bookings():
+    user, error_response, status_code = verify_firebase_token()
+    if error_response:
+        return error_response, status_code
+
+    # Only allow admins — you can add custom admin check logic here
+    if user.get("email") not in ["admin@example.com"]:  # 🔒 update this
+        return jsonify({"error": "Unauthorized"}), 403
+
+    bookings_ref = db.collection("bookings")
+    bookings = [doc.to_dict() | {"id": doc.id} for doc in bookings_ref.stream()]
+    return jsonify(bookings), 200
+
+################################################
+
 # Create a new booking
 @booking_bp.route("/bookings", methods=["POST"])
 def create_booking():
