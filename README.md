@@ -1,13 +1,3 @@
-Here’s a refined and professional version of your **Cleaning Service Assignment Submission Document** that you can submit or attach as a `README.docx` or PDF:
-
----
-
-# **Cleaning Service Assignment Submission**
-
-**Candidate:** Kavindu Karunathilaka
-**Date:** 21st July 2025
-
----
 
 ## 🔗 GitHub Repository Links
 
